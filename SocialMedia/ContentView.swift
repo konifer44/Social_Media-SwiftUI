@@ -13,7 +13,6 @@ struct ContentView: View {
     @State private var selectedTab = 1
     
     var body: some View {
-        ZStack {
             TabView(selection: $selectedTab){
                 NewsFeedTabView()
                     .tabItem {
@@ -44,13 +43,7 @@ struct ContentView: View {
                     .tag(4)
                 
             }
-          
-            Image(systemName: "pencil.circle.fill")
-                .font(.system(size: 50))
-                .foregroundColor(.blue)
-                .clipShape(Circle())
-                .position(x: 350, y: 750)
-        }
+        
         .onAppear{
             firebase.listen()
         }

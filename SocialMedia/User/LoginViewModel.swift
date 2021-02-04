@@ -10,9 +10,12 @@ import Firebase
 import FirebaseStorage
 import SwiftUI
 import CoreHaptics
+import AuthenticationServices
+import Combine
 
 class LoginViewModel: ObservableObject{
     @EnvironmentObject var firebase: Firebase
+    @Published var isLoading = false { didSet { self.didChange.send(self) }}
     @Published var email = ""
     @Published var password = ""
     @Published var confirmPassword = ""
@@ -27,9 +30,11 @@ class LoginViewModel: ObservableObject{
         }
     }
     @State private var hapticFeedback = UINotificationFeedbackGenerator()
-    
+  
+    var didChange = PassthroughSubject<LoginViewModel, Never>()
     var isPasswordMatch: Bool { password == confirmPassword }
     
+
     
     func signUp(){
         if isPasswordMatch {
@@ -58,6 +63,7 @@ class LoginViewModel: ObservableObject{
     }
     
     func signIn() {
+        self.isLoading = true
         Auth.auth().signIn(withEmail: email, password: password){  [weak self] authResult, error in
           guard let strongSelf = self else { return }
           
@@ -71,6 +77,7 @@ class LoginViewModel: ObservableObject{
                 }
                     strongSelf.hapticFeedback.notificationOccurred(.error)
             }
+            strongSelf.isLoading = false
         }
     }
 }

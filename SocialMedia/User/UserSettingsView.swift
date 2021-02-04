@@ -61,7 +61,7 @@ struct UserSettingsView: View {
                 HStack{
                     Text("Email")
                         .frame(width: 120, alignment: .leading)
-                    Text("Jan")
+                    Text("\((firebase.user?.email) ?? "User Email")")
                     
                     Spacer()
                 }
