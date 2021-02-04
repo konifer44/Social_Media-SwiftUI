@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 import SwiftUI
 import CoreHaptics
 
@@ -25,17 +26,14 @@ class LoginViewModel: ObservableObject{
             }
         }
     }
-
     @State private var hapticFeedback = UINotificationFeedbackGenerator()
     
-    var isPasswordMatch: Bool {
-        password == confirmPassword
-    }
+    var isPasswordMatch: Bool { password == confirmPassword }
     
     
     func signUp(){
         if isPasswordMatch {
-            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            Auth.auth().createUser(withEmail: email, password: password){ authResult, error in
                 if let authResult = authResult {
                     print(authResult.user)
                     self.hapticFeedback.notificationOccurred(.success)
@@ -60,31 +58,19 @@ class LoginViewModel: ObservableObject{
     }
     
     func signIn() {
-        Auth.auth().signIn(withEmail: email, password: password) {authResult, error in
+        Auth.auth().signIn(withEmail: email, password: password){  [weak self] authResult, error in
+          guard let strongSelf = self else { return }
+          
             if authResult != nil {
-                self.hapticFeedback.notificationOccurred(.success)
+                strongSelf.hapticFeedback.notificationOccurred(.success)
             }
-           
-            
             if let error = error {
                 print(error.localizedDescription)
                 withAnimation {
-                    self.error = error.localizedDescription
+                    strongSelf.error = error.localizedDescription
                 }
-                self.hapticFeedback.notificationOccurred(.error)
+                    strongSelf.hapticFeedback.notificationOccurred(.error)
             }
         }
     }
-    
-    func singOut() {
-        do {
-            try Auth.auth().signOut()
-            firebase.user = nil
-        } catch {
-            self.error = "Error with logout"
-        }
-    }
-    
-    
-    
 }

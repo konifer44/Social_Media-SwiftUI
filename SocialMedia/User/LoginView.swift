@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject var loginViewModel = LoginViewModel()
+    @EnvironmentObject var firebase: Firebase
+    @State var loginViewModel = LoginViewModel()
     
     var body: some View {
         VStack {
@@ -77,9 +78,9 @@ struct LoginView: View {
     }
 }
 
-struct NewLoginView_Previews: PreviewProvider {
+struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        NewLoginView()
+        LoginView()
     }
 }
 
