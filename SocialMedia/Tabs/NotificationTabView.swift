@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct NotificationsTabView: View {
+    @EnvironmentObject var firebase: Firebase
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+       Text("Notifications")
     }
 }
 

@@ -3,23 +3,47 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA4C1734A56652FEDFD172C1 /* Pods_SocialMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07EAE3C7608D1115CA38B1A1 /* Pods_SocialMedia.framework */; };
+		E74BEC0925C5F1340084866A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BEC0825C5F1340084866A /* LoginView.swift */; };
+		E7727F3925C35BB400AF9814 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7727F3825C35BB400AF9814 /* Firebase.swift */; };
+		E7727F3C25C3662700AF9814 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7727F3B25C3662700AF9814 /* GoogleService-Info.plist */; };
+		E7B9213125C5FAE6006CB788 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B9213025C5FAE6006CB788 /* ImagePicker.swift */; };
+		E7FBB72325C36D7B0078BE5C /* UserManageTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FBB72225C36D7B0078BE5C /* UserManageTab.swift */; };
+		E7FBB72625C36E360078BE5C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FBB72525C36E360078BE5C /* LoginViewModel.swift */; };
 		E7FF34F025C34E5B00A91F74 /* SocialMediaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FF34EF25C34E5B00A91F74 /* SocialMediaApp.swift */; };
 		E7FF34F225C34E5B00A91F74 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FF34F125C34E5B00A91F74 /* ContentView.swift */; };
 		E7FF34F425C34E5C00A91F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7FF34F325C34E5C00A91F74 /* Assets.xcassets */; };
 		E7FF34F725C34E5C00A91F74 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7FF34F625C34E5C00A91F74 /* Preview Assets.xcassets */; };
+		E7FF350025C34ECC00A91F74 /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FF34FF25C34ECC00A91F74 /* UserSettingsView.swift */; };
+		E7FF350325C34EFA00A91F74 /* NewsFeedTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FF350225C34EFA00A91F74 /* NewsFeedTabView.swift */; };
+		E7FF350625C34F2000A91F74 /* NotificationTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FF350525C34F2000A91F74 /* NotificationTabView.swift */; };
+		E7FF350925C34F8700A91F74 /* MessagesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FF350825C34F8700A91F74 /* MessagesTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07EAE3C7608D1115CA38B1A1 /* Pods_SocialMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AA60B21A4DCA29B35840F07 /* Pods-SocialMedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialMedia.debug.xcconfig"; path = "Target Support Files/Pods-SocialMedia/Pods-SocialMedia.debug.xcconfig"; sourceTree = "<group>"; };
+		470A825B769071BF8F84BBCA /* Pods-SocialMedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialMedia.release.xcconfig"; path = "Target Support Files/Pods-SocialMedia/Pods-SocialMedia.release.xcconfig"; sourceTree = "<group>"; };
+		E74BEC0825C5F1340084866A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E7727F3825C35BB400AF9814 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		E7727F3B25C3662700AF9814 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E7B9213025C5FAE6006CB788 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		E7FBB72225C36D7B0078BE5C /* UserManageTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManageTab.swift; sourceTree = "<group>"; };
+		E7FBB72525C36E360078BE5C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E7FF34EC25C34E5B00A91F74 /* SocialMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FF34EF25C34E5B00A91F74 /* SocialMediaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaApp.swift; sourceTree = "<group>"; };
 		E7FF34F125C34E5B00A91F74 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E7FF34F325C34E5C00A91F74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7FF34F625C34E5C00A91F74 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E7FF34F825C34E5C00A91F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7FF34FF25C34ECC00A91F74 /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
+		E7FF350225C34EFA00A91F74 /* NewsFeedTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedTabView.swift; sourceTree = "<group>"; };
+		E7FF350525C34F2000A91F74 /* NotificationTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTabView.swift; sourceTree = "<group>"; };
+		E7FF350825C34F8700A91F74 /* MessagesTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +51,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA4C1734A56652FEDFD172C1 /* Pods_SocialMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		73BE47110C0E3D169055718C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3AA60B21A4DCA29B35840F07 /* Pods-SocialMedia.debug.xcconfig */,
+				470A825B769071BF8F84BBCA /* Pods-SocialMedia.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E74BEC1825C5F4A60084866A /* User */ = {
+			isa = PBXGroup;
+			children = (
+				E7FF34FF25C34ECC00A91F74 /* UserSettingsView.swift */,
+				E7FBB72525C36E360078BE5C /* LoginViewModel.swift */,
+				E74BEC0825C5F1340084866A /* LoginView.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		E79256FA25C5EEDF00931A78 /* FirebaseAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				E7727F3825C35BB400AF9814 /* Firebase.swift */,
+			);
+			path = FirebaseAuthentication;
+			sourceTree = "<group>";
+		};
 		E7FF34E325C34E5B00A91F74 = {
 			isa = PBXGroup;
 			children = (
 				E7FF34EE25C34E5B00A91F74 /* SocialMedia */,
 				E7FF34ED25C34E5B00A91F74 /* Products */,
+				73BE47110C0E3D169055718C /* Pods */,
+				E9E8BE5BD7EF94DD916C2F10 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,8 +108,13 @@
 			children = (
 				E7FF34EF25C34E5B00A91F74 /* SocialMediaApp.swift */,
 				E7FF34F125C34E5B00A91F74 /* ContentView.swift */,
+				E7B9213025C5FAE6006CB788 /* ImagePicker.swift */,
+				E74BEC1825C5F4A60084866A /* User */,
+				E79256FA25C5EEDF00931A78 /* FirebaseAuthentication */,
+				E7FF350B25C34FB000A91F74 /* Tabs */,
 				E7FF34F325C34E5C00A91F74 /* Assets.xcassets */,
 				E7FF34F825C34E5C00A91F74 /* Info.plist */,
+				E7727F3B25C3662700AF9814 /* GoogleService-Info.plist */,
 				E7FF34F525C34E5C00A91F74 /* Preview Content */,
 			);
 			path = SocialMedia;
@@ -69,6 +128,25 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		E7FF350B25C34FB000A91F74 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				E7FF350225C34EFA00A91F74 /* NewsFeedTabView.swift */,
+				E7FF350825C34F8700A91F74 /* MessagesTabView.swift */,
+				E7FF350525C34F2000A91F74 /* NotificationTabView.swift */,
+				E7FBB72225C36D7B0078BE5C /* UserManageTab.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		E9E8BE5BD7EF94DD916C2F10 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07EAE3C7608D1115CA38B1A1 /* Pods_SocialMedia.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -76,9 +154,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7FF34FB25C34E5C00A91F74 /* Build configuration list for PBXNativeTarget "SocialMedia" */;
 			buildPhases = (
+				DEB90E6D4A283B215496C9D2 /* [CP] Check Pods Manifest.lock */,
 				E7FF34E825C34E5B00A91F74 /* Sources */,
 				E7FF34E925C34E5B00A91F74 /* Frameworks */,
 				E7FF34EA25C34E5B00A91F74 /* Resources */,
+				D6F05BD55C9EA5F7E6FE9A6B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,18 +208,70 @@
 			files = (
 				E7FF34F725C34E5C00A91F74 /* Preview Assets.xcassets in Resources */,
 				E7FF34F425C34E5C00A91F74 /* Assets.xcassets in Resources */,
+				E7727F3C25C3662700AF9814 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D6F05BD55C9EA5F7E6FE9A6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SocialMedia/Pods-SocialMedia-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SocialMedia/Pods-SocialMedia-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SocialMedia/Pods-SocialMedia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEB90E6D4A283B215496C9D2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SocialMedia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E7FF34E825C34E5B00A91F74 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7727F3925C35BB400AF9814 /* Firebase.swift in Sources */,
+				E7FF350625C34F2000A91F74 /* NotificationTabView.swift in Sources */,
 				E7FF34F225C34E5B00A91F74 /* ContentView.swift in Sources */,
+				E7FBB72325C36D7B0078BE5C /* UserManageTab.swift in Sources */,
+				E7FF350025C34ECC00A91F74 /* UserSettingsView.swift in Sources */,
+				E7FF350925C34F8700A91F74 /* MessagesTabView.swift in Sources */,
 				E7FF34F025C34E5B00A91F74 /* SocialMediaApp.swift in Sources */,
+				E74BEC0925C5F1340084866A /* LoginView.swift in Sources */,
+				E7B9213125C5FAE6006CB788 /* ImagePicker.swift in Sources */,
+				E7FBB72625C36E360078BE5C /* LoginViewModel.swift in Sources */,
+				E7FF350325C34EFA00A91F74 /* NewsFeedTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +396,7 @@
 		};
 		E7FF34FC25C34E5C00A91F74 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AA60B21A4DCA29B35840F07 /* Pods-SocialMedia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -286,6 +419,7 @@
 		};
 		E7FF34FD25C34E5C00A91F74 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 470A825B769071BF8F84BBCA /* Pods-SocialMedia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

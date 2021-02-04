@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct NewPostTabView: View {
+struct MessagesTabView: View {
     var body: some View {
-        Text("NewPostTabView")
+        Text("MessagesTabView")
     }
 }
 
-struct NewPostTabView_Previews: PreviewProvider {
+struct MessagesTabView_Previews: PreviewProvider {
     static var previews: some View {
-        NewPostTabView()
+        MessagesTabView()
     }
 }
