@@ -17,7 +17,7 @@ struct UserManageTab: View {
                 UserSettingsView()
             } else {
                 LoginView()
-                    .environmentObject(firebase)
+                    //.environmentObject(firebase)
             }
             // .edgesIgnoringSafeArea(.all)
         }

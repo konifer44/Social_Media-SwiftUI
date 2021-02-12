@@ -2,11 +2,10 @@
 //  ContentView.swift
 //  SocialMedia
 //
-//  Created by Jan Konieczny on 28/01/2021.
+//  Created by Jan Konieczny on 06/02/2021.
 //
 
 import SwiftUI
-import Firebase
 
 struct ContentView: View {
     @EnvironmentObject var firebase: Firebase
@@ -14,14 +13,16 @@ struct ContentView: View {
     
     var body: some View {
             TabView(selection: $selectedTab){
-                NewsFeedTabView()
+            PostsView()
+                
                     .tabItem {
                         Image(systemName: "house")
                         Text("Home")
                     }
                     .tag(1)
                 
-                MessagesTabView()
+                Text("")
+               // MessagesTabView()
                     .tabItem {
                         Image(systemName: "text.bubble")
                         Text("Messages")
@@ -50,6 +51,7 @@ struct ContentView: View {
         .edgesIgnoringSafeArea(.all)
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

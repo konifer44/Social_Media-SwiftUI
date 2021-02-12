@@ -2,17 +2,21 @@
 //  SocialMediaApp.swift
 //  SocialMedia
 //
-//  Created by Jan Konieczny on 28/01/2021.
+//  Created by Jan Konieczny on 06/02/2021.
 //
 
 import SwiftUI
 import Firebase
-import FirebaseStorage
+
 @main
 struct SocialMediaApp: App {
     @StateObject var firebase = Firebase()
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+   // @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    init(){
+        FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true
+    }
     
     var body: some Scene {
         WindowGroup {
@@ -21,11 +25,13 @@ struct SocialMediaApp: App {
         }
     }
     
-    class AppDelegate: NSObject, UIApplicationDelegate {
-        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-            FirebaseApp.configure()
-            return true
-        }
-    }
+   
+//    class AppDelegate: NSObject, UIApplicationDelegate {
+//        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+//            //FirebaseApp.configure()
+//         //   Database.database().isPersistenceEnabled = true
+//            return true
+//        }
+//    }
 
 }
