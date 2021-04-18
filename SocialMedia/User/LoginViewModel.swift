@@ -15,7 +15,7 @@ import Combine
 
 class LoginViewModel: ObservableObject{
     @EnvironmentObject var firebase: Firebase
-    @Published var isLoading = false { didSet { self.didChange.send(self) }}
+    @Published var isLoading = false { willSet { objectWillChange.send()}}
     @Published var email = ""
     @Published var password = ""
     @Published var confirmPassword = ""
@@ -31,7 +31,6 @@ class LoginViewModel: ObservableObject{
     }
     @State private var hapticFeedback = UINotificationFeedbackGenerator()
   
-    var didChange = PassthroughSubject<LoginViewModel, Never>()
     var isPasswordMatch: Bool { password == confirmPassword }
     
 

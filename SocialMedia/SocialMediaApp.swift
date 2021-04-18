@@ -11,6 +11,7 @@ import Firebase
 @main
 struct SocialMediaApp: App {
     @StateObject var firebase = Firebase()
+    @StateObject var postsViewModel = PostsViewModel()
    // @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     init(){
@@ -22,6 +23,7 @@ struct SocialMediaApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(firebase)
+                .environmentObject(postsViewModel)
         }
     }
     

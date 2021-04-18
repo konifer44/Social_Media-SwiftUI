@@ -9,18 +9,17 @@ import SwiftUI
 import Firebase
 
 struct UserManageTab: View {
+    @EnvironmentObject var postsViewModel: PostsViewModel
     @EnvironmentObject var firebase: Firebase
     
     var body: some View {
-        VStack{
-            if firebase.user != nil {
+ 
+            
                 UserSettingsView()
-            } else {
-                LoginView()
-                    //.environmentObject(firebase)
-            }
+                    .environmentObject(postsViewModel)
+           
             // .edgesIgnoringSafeArea(.all)
-        }
+        
     }
 }
 

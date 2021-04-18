@@ -21,9 +21,9 @@ struct CustomTextField: UIViewRepresentable {
             self.placeHolder = placeHolder
         }
 
-//        func textFieldDidChangeSelection(_ textField: UITextField) {
-//            text = textField.text ?? "chuje muje"
-//        }
+        func textFieldDidChangeSelection(_ textField: UITextField) {
+            text = textField.text ?? "chuje muje"
+        }
 
     }
 

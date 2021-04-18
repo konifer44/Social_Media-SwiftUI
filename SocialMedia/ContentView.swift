@@ -8,46 +8,66 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var postsViewModel: PostsViewModel
     @EnvironmentObject var firebase: Firebase
     @State private var selectedTab = 1
     
     var body: some View {
-            TabView(selection: $selectedTab){
-            PostsView()
+        VStack{
+            if firebase.user != nil {
+                TabView(selection: $selectedTab){
+                    PostsView()
+                        .tabItem {
+                            Image(systemName: "house")
+                            Text("Home")
+                        }
+                        .tag(1)
+                    
+                    Text("")
+                        // MessagesTabView()
+                        .tabItem {
+                            Image(systemName: "text.bubble")
+                            Text("Messages")
+                        }
+                        .tag(2)
+                    
+                    NotificationsTabView()
+                        .tabItem {
+                            Image(systemName: "bell")
+                            Text("Notifications")
+                        }
+                        .tag(3)
+                    
+                    UserManageTab()
+                        .tabItem {
+                            Image(systemName: "person")
+                            Text("Account")
+                        }
+                        .tag(4)
+                }
                 
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("Home")
-                    }
-                    .tag(1)
                 
-                Text("")
-               // MessagesTabView()
-                    .tabItem {
-                        Image(systemName: "text.bubble")
-                        Text("Messages")
-                    }
-                    .tag(2)
-                
-                NotificationsTabView()
-                    .tabItem {
-                        Image(systemName: "bell")
-                        Text("Notifications")
-                    }
-                    .tag(3)
-                
-                UserManageTab()
-                    .tabItem {
-                        Image(systemName: "person")
-                        Text("Account")
-                    }
-                    .tag(4)
-                
+            } else {
+                LoginView()
+                    .environmentObject(postsViewModel)
             }
+        }
+        .onChange(of: firebase.user?.uid){_ in
+            print("hi")
+            if firebase.user != nil {
+                postsViewModel.observeForNewPosts()
+                postsViewModel.observeForRemovedPosts()
+            }
+            
+        }
         
         .onAppear{
             firebase.listen()
         }
+        .onDisappear{
+            firebase.removeListener()
+        }
+        
         .edgesIgnoringSafeArea(.all)
     }
 }

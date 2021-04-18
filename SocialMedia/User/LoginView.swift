@@ -9,8 +9,11 @@ import SwiftUI
 import Firebase
 import FirebaseAuth
 import AuthenticationServices
+import CoreHaptics
 
 struct LoginView: View {
+    @State private var hapticFeedback = UINotificationFeedbackGenerator()
+    @EnvironmentObject var postsViewModel: PostsViewModel
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var firebase: Firebase
     @StateObject var loginViewModel = LoginViewModel()
@@ -22,9 +25,7 @@ struct LoginView: View {
             ZStack {
                 VStack {
                     Spacer(minLength: 150)
-                    Image(systemName: "person.3.fill")
-                        .font(.system(size: 100))
-                        .foregroundColor(.blue)
+                    Image("logo")
                         .padding()
                     
                     TextField("Enter email", text: $loginViewModel.email)
@@ -90,6 +91,7 @@ struct LoginView: View {
                                           onCompletion: { result in
                                             switch result {
                                             case .success(let authResults):
+                                                self.hapticFeedback.notificationOccurred(.success)
                                                 loginViewModel.isLoading = true
                                                 switch authResults.credential {
                                                 case let appleIDCredential as ASAuthorizationAppleIDCredential:
@@ -179,7 +181,7 @@ struct LoginTextField: ViewModifier {
         content
             .padding()
             .background(Color.gray.opacity(0.2))
-            .cornerRadius(30)
+            .cornerRadius(10)
             .padding(EdgeInsets(top: 5, leading: 20, bottom: 10, trailing: 20))
     }
 }
@@ -190,7 +192,7 @@ struct ButtonModifier: ViewModifier {
             .frame(width: 280, height: 50, alignment: .center)
             .foregroundColor(.white)
             .background(LinearGradient(gradient: Gradient(colors: [.blue, .purple]), startPoint: .leading, endPoint: .trailing))
-            .cornerRadius(5)
+            .cornerRadius(10)
     }
 }
 

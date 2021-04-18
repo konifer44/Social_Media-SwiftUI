@@ -13,10 +13,11 @@ struct AddPostView: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var firebase: Firebase
     @EnvironmentObject var postsViewModel: PostsViewModel
+    @Namespace var exampleNamespace
     
     init() {
-            UITextView.appearance().backgroundColor = .clear
-        }
+        UITextView.appearance().backgroundColor = .clear
+    }
     
     var body: some View {
         ZStack{
@@ -30,6 +31,7 @@ struct AddPostView: View {
                         .frame(width: 50, height: 50, alignment: .center)
                         .clipShape(Circle())
                     
+                    Text(firebase.user?.displayName ?? "")
                     Spacer()
                     Text(Date().addingTimeInterval(600), style: .date)
                     Text(Date().addingTimeInterval(600), style: .time)
@@ -37,14 +39,9 @@ struct AddPostView: View {
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 5, trailing: 15))
                 Divider()
                 
-                
-                //                CustomTextField(text: $postsViewModel.newPost.message, placeHolder: "Post", isFirstResponder: true)
-                //                    .padding(EdgeInsets(top: 5, leading: 15, bottom: 5, trailing: 15))
-                
                 TextEditor(text: $postsViewModel.newPost.message)
                     .padding(EdgeInsets(top: 5, leading: 15, bottom: 5, trailing: 15))
-                    //.background(Color.red)
-                
+
                 Spacer()
                 Divider()
                 HStack{
@@ -58,7 +55,9 @@ struct AddPostView: View {
                     Spacer(minLength: 70)
                     Button("Post"){
                         guard let userID = firebase.user?.uid else { return }
-                        postsViewModel.uploadData(userID: userID)
+                        if let userURL = firebase.user?.photoURL {
+                            postsViewModel.uploadData(userID: userID, userName: firebase.user?.displayName ?? "", userPhotoURL: userURL)
+                        } 
                     }.disabled(postsViewModel.newPost.message.isEmpty)
                     Spacer()
                 }
@@ -67,7 +66,7 @@ struct AddPostView: View {
             }
             
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 250, alignment: .topLeading)
-            .background(Color(.systemGray5))//Color(UIColor.systemBackground))
+            .background(Color(.systemGray5))
             .cornerRadius(10)
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 50, trailing: 20))
             .shadow(color: colorScheme == .light ? Color.black.opacity(0.5) : Color.white.opacity(0.5) , radius: 5)

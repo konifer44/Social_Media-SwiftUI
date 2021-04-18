@@ -8,61 +8,85 @@
 import SwiftUI
 
 struct PostsView: View {
-    @StateObject var postsViewModel = PostsViewModel()
-    
+    @EnvironmentObject var postsViewModel: PostsViewModel
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ZStack {
-            NavigationView {
+            NavigationView{
                
-                VStack {
-                  //  Spacer().frame(height: postsViewModel.addPostIsPresented ? 100 : 0)
-                    List(postsViewModel.posts, id: \.self) {
-                       
+                ScrollView{
+                    ForEach(postsViewModel.posts, id: \.self) {
+                        Spacer().frame(height: postsViewModel.addPostIsPresented ? 100 : 0)
                         PostView(post: $0)
+                            .shadow(color: colorScheme == .light ? Color.black.opacity(0.5) : Color.white.opacity(0.5) , radius: 2)
+                            .padding(10)
                             .environmentObject(postsViewModel)
-                            .listRowInsets(EdgeInsets())
-                            .transition(.slide)
+                            .buttonStyle(PlainButtonStyle())
                     }
-                   
-                    .listStyle(PlainListStyle())
-//                    .navigationBarTitle("Posts")
-//                    .navigationBarHidden(postsViewModel.addPostIsPresented ? true : false)
                     .blur(radius: postsViewModel.addPostIsPresented ? 10 : 0)
                 }
+                .navigationBarTitle("News Feed")
+                
                 
             }
-            
-            Button(action: {
-                postsViewModel.addPostIsPresented = true
-            }, label: {
-
-                Image(systemName: "pencil.circle.fill")
-                    .font(.system(size: 55))
-                    .background(Color.white)
-                    .clipShape(Circle())
-                
-            })
-            .position(x: 350, y: 700)
-            
             if postsViewModel.addPostIsPresented {
                 AddPostView()
-                    .environmentObject(postsViewModel)
+            } else {
+                Button(action: {
+                    postsViewModel.addPostIsPresented = true
+                }, label: {
                     
-                
+                    Image(systemName: "pencil.circle.fill")
+                        .font(.system(size: 55))
+                        .background(Color.white)
+                        .clipShape(Circle())
+                    
+                })
+                .position(x: 350, y: 700)
             }
+           
         }
-        .onAppear(perform: {
-            postsViewModel.fetchData()
-        })
+        .onAppear{
+            //postsViewModel.observeForNewPosts()
+        }
+        .onDisappear{
+            postsViewModel.removeAllObservers()
+        }
+    }
+}
+struct PostsView_Previews: PreviewProvider {
+    static var previews: some View {
         
-        
-        
+        PostsView()
+            .environmentObject(PostsViewModel())
     }
 }
 
-struct PostsView_Previews: PreviewProvider {
-    static var previews: some View {
-        PostsView()
-        
-    }
-}
+
+/*
+ ZStack{
+ Color(.systemGray5).edgesIgnoringSafeArea(.all)
+ ScrollView{
+ 
+ }
+ 
+ if postsViewModel.addPostIsPresented {
+ AddPostView()
+ } else {
+ Button(action: {
+ postsViewModel.addPostIsPresented = true
+ }, label: {
+ 
+ Image(systemName: "pencil.circle.fill")
+ .font(.system(size: 55))
+ .background(Color.white)
+ .clipShape(Circle())
+ 
+ })
+ .position(x: 350, y: 700)
+ }
+ }
+ 
+ 
+ 
+ */
