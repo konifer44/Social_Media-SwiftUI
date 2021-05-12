@@ -1,32 +1,15 @@
-[![Version](https://img.shields.io/cocoapods/v/Firebase.svg?style=flat)](https://cocoapods.org/pods/Firebase)
-[![License](https://img.shields.io/cocoapods/l/Firebase.svg?style=flat)](https://cocoapods.org/pods/Firebase)
-[![Platform](https://img.shields.io/cocoapods/p/Firebase.svg?style=flat)](https://cocoapods.org/pods/Firebase)
+[![Version](https://img.shields.io/cocoapods/v/GoogleUtilities.svg?style=flat)](https://cocoapods.org/pods/GoogleUtilities)
+[![License](https://img.shields.io/cocoapods/l/GoogleUtilities.svg?style=flat)](https://cocoapods.org/pods/GoogleUtilities)
+[![Platform](https://img.shields.io/cocoapods/p/GoogleUtilities.svg?style=flat)](https://cocoapods.org/pods/GoogleUtilities)
 
-[![Actions Status][gh-abtesting-badge]][gh-actions]
-[![Actions Status][gh-appdistribution-badge]][gh-actions]
-[![Actions Status][gh-auth-badge]][gh-actions]
-[![Actions Status][gh-core-badge]][gh-actions]
-[![Actions Status][gh-crashlytics-badge]][gh-actions]
-[![Actions Status][gh-database-badge]][gh-actions]
-[![Actions Status][gh-datatransport-badge]][gh-actions]
-[![Actions Status][gh-dynamiclinks-badge]][gh-actions]
-[![Actions Status][gh-firebasepod-badge]][gh-actions]
-[![Actions Status][gh-firestore-badge]][gh-actions]
-[![Actions Status][gh-functions-badge]][gh-actions]
-[![Actions Status][gh-inappmessaging-badge]][gh-actions]
-[![Actions Status][gh-interop-badge]][gh-actions]
-[![Actions Status][gh-messaging-badge]][gh-actions]
-[![Actions Status][gh-remoteconfig-badge]][gh-actions]
-[![Actions Status][gh-storage-badge]][gh-actions]
-[![Actions Status][gh-symbolcollision-badge]][gh-actions]
-[![Actions Status][gh-zip-badge]][gh-actions]
-[![Travis](https://travis-ci.org/firebase/firebase-ios-sdk.svg?branch=master)](https://travis-ci.org/firebase/firebase-ios-sdk)
+[![Actions Status][gh-google-utilities-badge]][gh-actions]
 
-# Firebase Apple Open Source Development
+# GoogleUtilities
 
-This repository contains all Apple platform Firebase SDK source except FirebaseAnalytics,
-FirebasePerformance, and FirebaseML.
+GoogleUtilities provides a set of utilities for Firebase and other Google SDKs for Apple platform
+development.
 
+<<<<<<< HEAD
 The repository also includes GoogleUtilities source. The
 [GoogleUtilities](GoogleUtilities/README.md) pod is
 a set of utilities used by Firebase and other Google products.
@@ -93,19 +76,48 @@ Instructions for installing binary frameworks via
 ### Using Firebase from a Framework or a library
 
 [Using Firebase from a Framework or a library](docs/firebase_in_libraries.md)
+=======
+The utilities are not directly supported for non-Google library usage.
+
+## Integration Testing
+These instructions apply to minor and patch version updates. Major versions need
+a customized adaptation.
+
+After the CI is green:
+  * Update the version in the podspec
+  * Add the CocoaPods tag
+    * `git tag CocoaPods-{version}`
+    * `git push origin CocoaPods-{version}`
+  * Push the podspec to SpecsStaging
+    * `pod repo push staging GoogleUtilities.podspec`
+  * Run Firebase CI by waiting until next nightly or adding a PR that touches `Gemfile`
+  * On google3, copybara and run a global TAP
+    * `third_party/firebase/ios/Releases/run_copy_bara.py --directory GoogleUtilities`
+
+## Publishing
+  * Add a version tag for Swift PM
+    * `git tag {version}`
+    * `git push origin {version}`
+  * `pod trunk push GoogleUtilities.podspec`
+  * Clean up SpecsStaging
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 
 ## Development
 
-To develop Firebase software in this repository, ensure that you have at least
-the following software:
+To develop in this repository, ensure that you have at least the following software:
 
+<<<<<<< HEAD
   * Xcode 10.3 (or later)
   * CocoaPods 1.7.2 (or later)
+=======
+  * Xcode 12.0 (or later)
+  * CocoaPods 1.10.0 (or later)
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
   * [CocoaPods generate](https://github.com/square/cocoapods-generate)
 
 For the pod that you want to develop:
 
-`pod gen Firebase{name here}.podspec --local-sources=./ --auto-open --platforms=ios`
+`pod gen GoogleUtilities.podspec --local-sources=./ --auto-open --platforms=ios`
 
 Note: If the CocoaPods cache is out of date, you may need to run
 `pod repo update` before the `pod gen` command.
@@ -114,11 +126,8 @@ Note: Set the `--platforms` option to `macos` or `tvos` to develop/test for
 those platforms. Since 10.2, Xcode does not properly handle multi-platform
 CocoaPods workspaces.
 
-Firestore has a self contained Xcode project. See
-[Firestore/README.md](Firestore/README.md).
-
 ### Development for Catalyst
-* `pod gen {name here}.podspec --local-sources=./ --auto-open --platforms=ios`
+* `pod gen GoogleUtilities.podspec --local-sources=./ --auto-open --platforms=ios`
 * Check the Mac box in the App-iOS Build Settings
 * Sign the App in the Settings Signing & Capabilities tab
 * Click Pods in the Project Manager
@@ -126,13 +135,11 @@ Firestore has a self contained Xcode project. See
 * Select the Unit-unit scheme
 * Run it to build and test
 
-### Adding a New Firebase Pod
-
-See [AddNewPod.md](AddNewPod.md).
-
-### Managing Headers and Imports
-
-See [HeadersImports.md](HeadersImports.md).
+Alternatively disable signing in each target:
+* Go to Build Settings tab
+* Click `+`
+* Select `Add User-Defined Setting`
+* Add `CODE_SIGNING_REQUIRED` setting with a value of `NO`
 
 ### Code Formatting
 
@@ -152,6 +159,7 @@ brew install swiftformat
 
 Select a scheme and press Command-u to build a component and run its unit tests.
 
+<<<<<<< HEAD
 #### Viewing Code Coverage (Deprecated)
 
 First, make sure that [xcov](https://github.com/nakiostudio/xcov) is installed with `gem install xcov`.
@@ -266,35 +274,16 @@ to Build Settings.
 See [Roadmap](ROADMAP.md) for more about the Firebase iOS SDK Open Source
 plans and directions.
 
+=======
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 ## Contributing
 
-See [Contributing](CONTRIBUTING.md) for more information on contributing to the Firebase
-iOS SDK.
+See [Contributing](CONTRIBUTING.md).
 
 ## License
 
 The contents of this repository is licensed under the
 [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
-Your use of Firebase is governed by the
-[Terms of Service for Firebase Services](https://firebase.google.com/terms/).
-
 [gh-actions]: https://github.com/firebase/firebase-ios-sdk/actions
-[gh-abtesting-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/abtesting/badge.svg
-[gh-appdistribution-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/appdistribution/badge.svg
-[gh-auth-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/auth/badge.svg
-[gh-core-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/core/badge.svg
-[gh-crashlytics-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/crashlytics/badge.svg
-[gh-database-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/database/badge.svg
-[gh-datatransport-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/datatransport/badge.svg
-[gh-dynamiclinks-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/dynamiclinks/badge.svg
-[gh-firebasepod-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/firebasepod/badge.svg
-[gh-firestore-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/firestore/badge.svg
-[gh-functions-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/functions/badge.svg
-[gh-inappmessaging-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/inappmessaging/badge.svg
-[gh-interop-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/interop/badge.svg
-[gh-messaging-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/messaging/badge.svg
-[gh-remoteconfig-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/remoteconfig/badge.svg
-[gh-storage-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/storage/badge.svg
-[gh-symbolcollision-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/symbolcollision/badge.svg
-[gh-zip-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/zip/badge.svg
+[gh-google-utilities-badge]: https://github.com/firebase/firebase-ios-sdk/workflows/google-utilities/badge.svg

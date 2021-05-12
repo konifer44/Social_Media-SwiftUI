@@ -21,8 +21,11 @@
 #import "FirebaseDatabase/Sources/Utilities/FStringUtilities.h"
 
 #define ARC4RANDOM_MAX 0x100000000
+<<<<<<< HEAD
 #define INTEGER_32_MIN (-2147483648)
 #define INTEGER_32_MAX 2147483647
+=======
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 
 #pragma mark -
 #pragma mark C functions
@@ -307,6 +310,17 @@ void firebaseJobsTroll(void) {
     return nil;
 }
 
+<<<<<<< HEAD
+=======
++ (NSInteger)int32min {
+    return INTEGER_32_MIN;
+}
+
++ (NSInteger)int32max {
+    return INTEGER_32_MAX;
+}
+
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 + (NSString *)ieee754StringForNumber:(NSNumber *)val {
     double d = [val doubleValue];
     NSData *data = [NSData dataWithBytes:&d length:sizeof(double)];
@@ -319,6 +333,13 @@ void firebaseJobsTroll(void) {
     return str;
 }
 
+<<<<<<< HEAD
+=======
++ (BOOL)tryParseString:(NSString *)string asInt:(NSInteger *)integer {
+    return tryParseStringToInt(string, integer);
+}
+
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 static inline BOOL tryParseStringToInt(__unsafe_unretained NSString *str,
                                        NSInteger *integer) {
     // First do some cheap checks (NOTE: The below checks are significantly

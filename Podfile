@@ -9,4 +9,8 @@ target 'SocialMedia' do
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'Firebase/Database'
+<<<<<<< HEAD
+=======
+pod "Introspect"
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 end

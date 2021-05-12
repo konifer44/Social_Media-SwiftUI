@@ -19,16 +19,18 @@
 	<key>STORAGE_BUCKET</key>
 	<string>social-media-59736.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:231337507308:ios:d37995baf75caf4a1068c9</string>
+	<key>DATABASE_URL</key>
+	<string>https://social-media-59736-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
 </plist>

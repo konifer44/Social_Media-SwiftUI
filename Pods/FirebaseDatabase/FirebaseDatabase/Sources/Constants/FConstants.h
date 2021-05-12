@@ -32,6 +32,10 @@ FOUNDATION_EXPORT NSString *const kFWPRequestAction;
 FOUNDATION_EXPORT NSString *const kFWPResponseForRNData;
 FOUNDATION_EXPORT NSString *const kFWPResponseForActionStatus;
 FOUNDATION_EXPORT NSString *const kFWPResponseForActionStatusOk;
+<<<<<<< HEAD
+=======
+FOUNDATION_EXPORT NSString *const kFWPResponseForActionStatusFailed;
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 FOUNDATION_EXPORT NSString *const kFWPResponseForActionStatusDataStale;
 FOUNDATION_EXPORT NSString *const kFWPResponseForActionData;
 FOUNDATION_EXPORT NSString *const kFWPResponseDataWarnings;
@@ -75,6 +79,10 @@ FOUNDATION_EXPORT NSString *const kFWPAsyncServerControlMessageReset;
 
 FOUNDATION_EXPORT NSString *const kFWPRequestActionPut;
 FOUNDATION_EXPORT NSString *const kFWPRequestActionMerge;
+<<<<<<< HEAD
+=======
+FOUNDATION_EXPORT NSString *const kFWPRequestActionGet;
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 FOUNDATION_EXPORT NSString *const kFWPRequestActionTaggedListen;
 FOUNDATION_EXPORT NSString *const kFWPRequestActionTaggedUnlisten;
 FOUNDATION_EXPORT NSString
@@ -105,9 +113,17 @@ FOUNDATION_EXPORT NSString *const kFWPRequestStatus;
 FOUNDATION_EXPORT NSString *const kWireProtocolVersionParam;
 FOUNDATION_EXPORT NSString *const kWebsocketProtocolVersion;
 FOUNDATION_EXPORT NSString *const kWebsocketServerKillPacket;
+<<<<<<< HEAD
 FOUNDATION_EXPORT const int kWebsocketMaxFrameSize;
 FOUNDATION_EXPORT NSUInteger const kWebsocketKeepaliveInterval;
 FOUNDATION_EXPORT NSUInteger const kWebsocketConnectTimeout;
+=======
+FOUNDATION_EXPORT NSString *const kPersistentConnectionOffline;
+FOUNDATION_EXPORT const int kWebsocketMaxFrameSize;
+FOUNDATION_EXPORT NSUInteger const kWebsocketKeepaliveInterval;
+FOUNDATION_EXPORT NSUInteger const kWebsocketConnectTimeout;
+FOUNDATION_EXPORT UInt64 const kPersistentConnectionGetConnectTimeout;
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 
 FOUNDATION_EXPORT float const kPersistentConnReconnectMinDelay;
 FOUNDATION_EXPORT float const kPersistentConnReconnectMaxDelay;

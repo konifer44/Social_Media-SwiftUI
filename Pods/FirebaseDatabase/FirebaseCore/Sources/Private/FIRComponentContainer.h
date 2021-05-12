@@ -15,6 +15,7 @@
  */
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 // The has_include is a workaround so the old IID needed for the FIS tests can find the headers.
 #if __has_include("FirebaseCore/Sources/Private/FIRComponentType.h")
 #import "FirebaseCore/Sources/Private/FIRComponentType.h"
@@ -24,6 +25,8 @@
 #import <FirebaseCore/FIRLibrary.h>
 #endif
 
+=======
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 NS_ASSUME_NONNULL_BEGIN
 
 /// A type-safe macro to retrieve a component from a container. This should be used to retrieve

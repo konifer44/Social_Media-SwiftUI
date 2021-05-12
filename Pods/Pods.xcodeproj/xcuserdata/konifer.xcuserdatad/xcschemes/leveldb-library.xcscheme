@@ -14,9 +14,21 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+<<<<<<< HEAD
+<<<<<<< HEAD:Pods/Pods.xcodeproj/xcuserdata/konifer.xcuserdatad/xcschemes/leveldb-library.xcscheme
                BlueprintIdentifier = "9307B7A119490930CF70393AB529AAC1"
                BuildableName = "leveldb.framework"
                BlueprintName = "leveldb-library"
+=======
+               BlueprintIdentifier = "97E3685499568DCCBA6C15905F707BDC"
+               BuildableName = "Introspect.framework"
+               BlueprintName = "Introspect"
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404:Pods/Pods.xcodeproj/xcuserdata/konifer.xcuserdatad/xcschemes/Introspect.xcscheme
+=======
+               BlueprintIdentifier = "9307B7A119490930CF70393AB529AAC1"
+               BuildableName = "leveldb.framework"
+               BlueprintName = "leveldb-library"
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

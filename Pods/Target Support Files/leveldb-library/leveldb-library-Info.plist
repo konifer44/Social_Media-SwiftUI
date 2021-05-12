@@ -15,7 +15,15 @@
   <key>CFBundlePackageType</key>
   <string>FMWK</string>
   <key>CFBundleShortVersionString</key>
+<<<<<<< HEAD
+<<<<<<< HEAD:Pods/Target Support Files/leveldb-library/leveldb-library-Info.plist
   <string>1.22.0</string>
+=======
+  <string>0.1.2</string>
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404:Pods/Target Support Files/Introspect/Introspect-Info.plist
+=======
+  <string>1.22.0</string>
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
   <key>CFBundleSignature</key>
   <string>????</string>
   <key>CFBundleVersion</key>

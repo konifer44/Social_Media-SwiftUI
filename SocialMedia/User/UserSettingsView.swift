@@ -10,6 +10,7 @@ import Firebase
 
 
 struct UserSettingsView: View {
+    @EnvironmentObject var postsViewModel: PostsViewModel
     @EnvironmentObject var firebase: Firebase
     // @ObservedObject var userViewModel = UserViewModel()
     
@@ -17,34 +18,44 @@ struct UserSettingsView: View {
     @State private var showImagePicker = false
     @State private var error: String = ""
     @State private var timeOut = false
-   
+    @State private var editName = false
+    @State private var temporaryName = ""
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
                 HStack{
                     Spacer()
                     Button("Logout"){
+                        postsViewModel.posts.removeAll()
                         firebase.signOut()
                     }
                     .padding()
                     .disabled(firebase.isUploading)
                 }
-            
+                
                 VStack{
                     ZStack{
                         Circle()
                             .strokeBorder(Color(.systemGray5),lineWidth: 4)
                             .frame(width: 185, height: 185, alignment: .center)
-                       
+                        
                         if firebase.isUploading {
                             ProgressView()
                                 .progressViewStyle(CircularProgressViewStyle())
+                                .foregroundColor(.white)
                         } else {
-                            firebase.userImageToDisplay?
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 170, height: 170, alignment: .center)
-                                .clipShape(Circle())
+                            if firebase.userImageToDisplay == nil{
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle())
+                                    .foregroundColor(.white)
+                            } else {
+                                firebase.userImageToDisplay?
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 170, height: 170, alignment: .center)
+                                    .clipShape(Circle())
+                            }
                         }
                     }
                     Button(action: {
@@ -60,36 +71,61 @@ struct UserSettingsView: View {
                 
                 HStack{
                     Text("Email")
-                        .frame(width: 120, alignment: .leading)
-                    Text("\((firebase.user?.email) ?? "User Email")")
+                        .frame(width: 100, alignment: .leading)
                     
+                    Text("\((firebase.user?.email) ?? "User Email")")
+                        .font(.system(size: 500))
+                        .minimumScaleFactor(0.02)
+                        .lineLimit(1)
+                        .padding(0)
                     Spacer()
                 }
                 .padding()
                 Divider()
                 
-                HStack{
-                    Text("Last Name")
-                        .frame(width: 120, alignment: .leading)
-                    Text("Konieczny")
-                    Spacer()
+                if editName {
+                    HStack{
+                        Text("User name")
+                            .frame(width: 100, alignment: .leading)
+                        if editName {
+                            TextField((firebase.user!.displayName?.isEmpty ?? false ? "Enter name" : firebase.user!.displayName) ?? "Enter name", text: $temporaryName)
+                        }
+                        Spacer()
+                        
+                        Button(action: {
+                            editName = false
+                            firebase.updateUserName(newName: temporaryName)
+                        }, label: {
+                            Text("Done")
+                        })
+                    }
+                    .padding()
+                    
+                    
+                } else {
+                    
+                    HStack{
+                        Text("User name")
+                            .frame(width: 100, alignment: .leading)
+                        
+                        Text(firebase.user?.displayName ?? "No user name")
+                        Spacer()
+                        
+                        Button(action: {
+                            editName = true
+                        }, label: {
+                            Text("Edit")
+                        })
+                    }
+                    .padding()
+                    
                 }
-                .padding()
-                Divider()
-                
-                HStack{
-                    Text("Email")
-                        .frame(width: 120, alignment: .leading)
-                    Text("emailExample@email.com")
-                    Spacer()
-                }
-                .padding()
                 Divider()
                 
                 HStack{
                     Text("Bio")
-                        .frame(width: 120, alignment: .leading)
-                    Text("")
+                        .frame(width: 100, alignment: .leading)
+                    Text(loremIpsum)
                     Spacer()
                 }
                 .padding()
@@ -104,6 +140,8 @@ struct UserSettingsView: View {
 struct UserSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         UserSettingsView()
+            .environmentObject(PostsViewModel())
+            .environmentObject(Firebase())
     }
 }
 

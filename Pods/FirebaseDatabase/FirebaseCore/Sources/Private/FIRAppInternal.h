@@ -16,6 +16,7 @@
 
 #import <FirebaseCore/FIRApp.h>
 
+<<<<<<< HEAD
 // The has_include is a workaround so the old IID needed for the FIS tests can find FIRErrors.h
 #if __has_include("FirebaseCore/Sources/Private/FIRErrors.h")
 #import "FirebaseCore/Sources/Private/FIRErrors.h"
@@ -23,6 +24,8 @@
 #import <FirebaseCore/FIRErrors.h>
 #endif
 
+=======
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 @class FIRComponentContainer;
 @protocol FIRLibrary;
 
@@ -46,6 +49,10 @@ extern NSString *const kFIRAppDeleteNotification;
 extern NSString *const kFIRAppIsDefaultAppKey;
 extern NSString *const kFIRAppNameKey;
 extern NSString *const kFIRGoogleAppIDKey;
+<<<<<<< HEAD
+=======
+extern NSString *const kFirebaseCoreErrorDomain;
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 
 /**
  * The format string for the User Defaults key used for storing the data collection enabled flag.
@@ -58,11 +65,14 @@ extern NSString *const kFIRGlobalAppDataCollectionEnabledDefaultsKeyFormat;
  */
 extern NSString *const kFIRGlobalAppDataCollectionEnabledPlistKey;
 
+<<<<<<< HEAD
 /**
  * A notification fired containing diagnostic information when SDK errors occur.
  */
 extern NSString *const kFIRAppDiagnosticsNotification;
 
+=======
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 /** @var FIRAuthStateDidChangeInternalNotification
  @brief The name of the @c NSNotificationCenter notification which is posted when the auth state
  changes (e.g. a new token has been produced, a user logs in or out). The object parameter of
@@ -106,6 +116,7 @@ extern NSString *const FIRAuthStateDidChangeInternalNotificationUIDKey;
 @property(nonatomic) FIRComponentContainer *container;
 
 /**
+<<<<<<< HEAD
  * Creates an error for failing to configure a subspec service. This method is called by each
  * FIRApp notification listener.
  */
@@ -114,6 +125,8 @@ extern NSString *const FIRAuthStateDidChangeInternalNotificationUIDKey;
                                                    service:(NSString *)service
                                                     reason:(NSString *)reason;
 /**
+=======
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
  * Checks if the default app is configured without trying to configure it.
  */
 + (BOOL)isDefaultAppConfigured;
@@ -128,8 +141,23 @@ extern NSString *const FIRAuthStateDidChangeInternalNotificationUIDKey;
 + (void)registerLibrary:(nonnull NSString *)name withVersion:(nonnull NSString *)version;
 
 /**
+<<<<<<< HEAD
  * Registers a given internal library with the given version number to be reported for
  * analytics.
+=======
+ * Registers a given internal library to be reported for analytics.
+ *
+ * @param library Optional parameter for component registration.
+ * @param name Name of the library.
+ */
++ (void)registerInternalLibrary:(nonnull Class<FIRLibrary>)library
+                       withName:(nonnull NSString *)name;
+
+/**
+ * Registers a given internal library with the given version number to be reported for
+ * analytics. This should only be used for non-Firebase libraries that have their own versioning
+ * scheme.
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
  *
  * @param library Optional parameter for component registration.
  * @param name Name of the library.
@@ -145,6 +173,7 @@ extern NSString *const FIRAuthStateDidChangeInternalNotificationUIDKey;
 + (NSString *)firebaseUserAgent;
 
 /**
+<<<<<<< HEAD
  * Used by each SDK to send logs about SDK configuration status to Clearcut.
  *
  * @note This API is a no-op, please remove calls to it.
@@ -154,6 +183,8 @@ extern NSString *const FIRAuthStateDidChangeInternalNotificationUIDKey;
                           error:(NSError *)error;
 
 /**
+=======
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
  * Can be used by the unit tests in eack SDK to reset FIRApp. This method is thread unsafe.
  */
 + (void)resetApps;

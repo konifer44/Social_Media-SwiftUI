@@ -15,7 +15,11 @@
   <key>CFBundlePackageType</key>
   <string>FMWK</string>
   <key>CFBundleShortVersionString</key>
+<<<<<<< HEAD:Pods/Target Support Files/FirebaseDatabase/FirebaseDatabase-Info.plist
   <string>6.6.0</string>
+=======
+  <string>7.5.0</string>
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404:Pods/Target Support Files/SDWebImageSwiftUI/SDWebImageSwiftUI-Info.plist
   <key>CFBundleSignature</key>
   <string>????</string>
   <key>CFBundleVersion</key>

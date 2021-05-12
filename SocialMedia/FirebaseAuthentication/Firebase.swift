@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseStorage
 
 class Firebase: ObservableObject {
-    @Published var user: UserModel? { didSet { self.didChange.send(self) }}
+    @Published var user: UserModel? { willSet { objectWillChange.send()}}
     @Published var userImageToUpload: UIImage? {
         didSet {
             uploadImage()
@@ -23,8 +23,9 @@ class Firebase: ObservableObject {
     @Published var isUploading = false
     
     let storage = Storage.storage()
-    var didChange = PassthroughSubject<Firebase, Never>()
     var handle: AuthStateDidChangeListenerHandle?
+
+    var documentURL: URL
     
     lazy var cache: URLCache = {
         let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
@@ -39,10 +40,16 @@ class Firebase: ObservableObject {
         return URLSession(configuration: config)
     }()
     
+    init(){
+        documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+    
     func uploadImage(){
-        guard let user = user else { return }
-        guard let userImageToUpload = userImageToUpload else { return }
-        guard let imageData = userImageToUpload.jpegData(compressionQuality: 0.1) else { return }
+        guard
+            let user = user,
+            let userImageToUpload = userImageToUpload,
+            let imageData = userImageToUpload.jpegData(compressionQuality: 0.1)
+        else { return }
         
         self.isUploading = true
         storage.reference().child(user.uid).putData(imageData, metadata: nil) { metadata , error in
@@ -55,43 +62,43 @@ class Firebase: ObservableObject {
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     changeRequest?.photoURL = url
                     changeRequest?.commitChanges(){ error in
-                        print(error?.localizedDescription as Any)
+                        // print(error?.localizedDescription as Any)
                     }
                     self.isUploading = false
                 }
             }
         }
     }
-    
     func downloadImage(){
-        guard let user = user else { return }
-        guard let userPhotoURL = user.photoURL else { return }
+        guard
+            let user = user,
+            let userPhotoURL = user.photoURL
+        else { return }
         
-        let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let targetURL = documentURL.appendingPathComponent(userPhotoURL.lastPathComponent)
-        
+        let targetURL = self.documentURL.appendingPathComponent(userPhotoURL.lastPathComponent)
         let request = URLRequest(url: userPhotoURL, cachePolicy: .returnCacheDataElseLoad)
+        
         if let data = try? Data(contentsOf: userPhotoURL) {
             DispatchQueue.main.async {
                 self.unwrappImage(data: data)
             }
-        }
-        let downloadTask = session.downloadTask(with: request) { url, response, error in
-            if let response = response, let url = url,
-               self.cache.cachedResponse(for: request) == nil,
-               let data = try? Data(contentsOf: url, options: [.mappedIfSafe]){
-                self.cache.storeCachedResponse(CachedURLResponse(response: response, data: data), for: request)
-                print("download4")
-                DispatchQueue.main.async {
-                    self.unwrappImage(data: data)
+            return
+        } else {
+            let downloadTask = self.session.downloadTask(with: request) { url, response, error in
+                if let response = response, let url = url,
+                   self.cache.cachedResponse(for: request) == nil,
+                   let data = try? Data(contentsOf: url, options: [.mappedIfSafe]){
+                    self.cache.storeCachedResponse(CachedURLResponse(response: response, data: data), for: request)
+                    DispatchQueue.main.async {
+                        self.unwrappImage(data: data)
+                    }
                 }
+                guard let tempURL = url else { return }
+                _ = try? FileManager.default.replaceItemAt(targetURL, withItemAt: tempURL)
             }
-            guard let tempURL = url else { return }
-            _ = try? FileManager.default.replaceItemAt(targetURL, withItemAt: tempURL)
+            downloadTask.resume()
         }
-        downloadTask.resume()
     }
-    
     func unwrappImage(data: Data){
         if let uiImage = UIImage(data: data){
             self.userImageToDisplay = Image(uiImage: uiImage)
@@ -102,6 +109,7 @@ class Firebase: ObservableObject {
     }
     func listen(){
         handle = Auth.auth().addStateDidChangeListener{ (auth, user) in
+            print("Got user")
             if let user = user {
                 print("Got user: \(user)")
                 self.user = UserModel(
@@ -119,53 +127,63 @@ class Firebase: ObservableObject {
     }
     
     func signOut () {
-        try? Auth.auth().signOut()
         self.user = nil
+        try? Auth.auth().signOut()
+        userImageToDisplay = nil
         self.cache.removeAllCachedResponses()
     }
     
+    func updateUserName(newName: String){
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = newName
+        changeRequest?.commitChanges{ error in
+            print(error?.localizedDescription as Any)
+            return
+        }
+        user?.displayName = newName
+    }
     
     func randomNonceString(length: Int = 32) -> String {
-      precondition(length > 0)
-      let charset: Array<Character> =
-          Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-      var result = ""
-      var remainingLength = length
-
-      while remainingLength > 0 {
-        let randoms: [UInt8] = (0 ..< 16).map { _ in
-          var random: UInt8 = 0
-          let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
-          if errorCode != errSecSuccess {
-            fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
-          }
-          return random
+        precondition(length > 0)
+        let charset: Array<Character> =
+            Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        var result = ""
+        var remainingLength = length
+        
+        while remainingLength > 0 {
+            let randoms: [UInt8] = (0 ..< 16).map { _ in
+                var random: UInt8 = 0
+                let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+                if errorCode != errSecSuccess {
+                    fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
+                }
+                return random
+            }
+            
+            randoms.forEach { random in
+                if remainingLength == 0 {
+                    return
+                }
+                
+                if random < charset.count {
+                    result.append(charset[Int(random)])
+                    remainingLength -= 1
+                }
+            }
         }
-
-        randoms.forEach { random in
-          if remainingLength == 0 {
-            return
-          }
-
-          if random < charset.count {
-            result.append(charset[Int(random)])
-            remainingLength -= 1
-          }
-        }
-      }
-
-      return result
+        
+        return result
     }
     
     func sha256(_ input: String) -> String {
-            let inputData = Data(input.utf8)
-            let hashedData = SHA256.hash(data: inputData)
-            let hashString = hashedData.compactMap {
+        let inputData = Data(input.utf8)
+        let hashedData = SHA256.hash(data: inputData)
+        let hashString = hashedData.compactMap {
             return String(format: "%02x", $0)
-            }.joined()
-
-            return hashString
-        }
+        }.joined()
+        
+        return hashString
+    }
 }
 
 

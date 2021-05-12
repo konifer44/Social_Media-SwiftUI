@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
+<<<<<<< HEAD:Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/Phone/FIRAuthProtoStartMFAPhoneResponseInfo 2.m
 #import "FirebaseAuth/Sources/Backend/RPC/Proto/Phone/FIRAuthProtoStartMFAPhoneResponseInfo.h"
+=======
+#import "GoogleUtilities/Environment/Public/GoogleUtilities/GULURLSessionDataResponse.h"
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404:Pods/GoogleUtilities/GoogleUtilities/Environment/URLSessionPromiseWrapper/GULURLSessionDataResponse.m
 
 NS_ASSUME_NONNULL_BEGIN
 

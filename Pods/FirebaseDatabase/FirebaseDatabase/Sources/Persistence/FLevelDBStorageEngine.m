@@ -166,7 +166,15 @@ static NSString *trackedQueryKeysKey(NSUInteger trackedQueryId, NSString *key) {
             // it'll go fine :P
             [writes enumerateKeysAndValuesAsData:^(NSString *key, NSData *data,
                                                    BOOL *stop) {
+<<<<<<< HEAD
               id pendingPut = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+=======
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+              // Update the deprecated API when minimum iOS version is 11+.
+              id pendingPut = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+#pragma clang diagnostic pop
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
               if ([pendingPut isKindOfClass:[FPendingPut class]]) {
                   FPendingPut *put = pendingPut;
                   id<FNode> newNode =

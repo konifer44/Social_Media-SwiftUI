@@ -20,4 +20,11 @@
 
 + (NSString *)get:(NSTimeInterval)now;
 
+<<<<<<< HEAD
+=======
++ (NSString *)successor:(NSString *)key;
+
++ (NSString *)predecessor:(NSString *)key;
+
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 @end

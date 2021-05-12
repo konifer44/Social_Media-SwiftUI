@@ -52,8 +52,12 @@ typedef NSMutableDictionary<NSString *, FIRDatabase *> FIRDatabaseDictionary;
 
 + (void)load {
     [FIRApp registerInternalLibrary:(Class<FIRLibrary>)self
+<<<<<<< HEAD
                            withName:@"fire-db"
                         withVersion:[FIRDatabase sdkVersion]];
+=======
+                           withName:@"fire-db"];
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
 }
 
 #pragma mark - FIRComponentRegistrant
@@ -116,7 +120,11 @@ typedef NSMutableDictionary<NSString *, FIRDatabase *> FIRDatabaseDictionary;
                     format:@"The Database URL '%@' cannot be parsed. "
                             "Specify a valid DatabaseURL within FIRApp or from "
                             "your databaseForApp:URL: call.",
+<<<<<<< HEAD
                            databaseUrl];
+=======
+                           url];
+>>>>>>> b0fe4ede551b697175ef2c12175fcf3e42038404
     } else if (![databaseUrl.path isEqualToString:@""] &&
                ![databaseUrl.path isEqualToString:@"/"]) {
         [NSException
