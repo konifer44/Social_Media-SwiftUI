@@ -8,7 +8,7 @@ import SwiftUI
 import Combine
 import Foundation
 import CryptoKit
-import Firebase
+import FirebaseAuth
 import FirebaseStorage
 
 class Firebase: ObservableObject {

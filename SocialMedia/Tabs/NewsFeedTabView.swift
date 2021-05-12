@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewsFeedTabView: View {
     var body: some View {
-        Text("NewsFeedTabView")
+      Text("hi")
     }
 }
 
